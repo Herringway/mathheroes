@@ -12,9 +12,11 @@ Solution genBestSolution(long[] input) {
 	return bestResult.front;
 }
 unittest {
-	auto solution = genBestSolution([6, 1, 3, 5]);
-	assert(solution.score > 46);
-	assert(solution.isValid);
+	foreach (possibility; (cast(long[])[6, 1, 3, 5]).permutations) {
+		auto solution = genBestSolution(possibility.array);
+		assert(solution.score == 70);
+		assert(solution.isValid);
+	}
 }
 Solution[] genSolutions(long[] valsOriginal) {
 	Solution[] output;
